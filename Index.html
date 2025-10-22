@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camille Prospère - Portfolio Manga</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+/* ====== Styles Globaux ====== */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
+body {background:#fff; color:#222; scroll-behavior:smooth;}
+h1,h2,h3 {margin-bottom:10px;}
+.section {padding:80px 10%; text-align:center; opacity:0; transform:translateY(50px); transition:all 0.6s ease;}
+.section.visible {opacity:1; transform:translateY(0);}
+.btn {display:inline-block; background:#222; color:#fff; padding:10px 20px; border-radius:25px; text-decoration:none; transition:all 0.3s ease;}
+.btn:hover {background:#444; transform:scale(1.05);}
+
+/* ====== Accueil ====== */
+.hero {height:100vh; display:flex; justify-content:center; align-items:center; text-align:center; background:linear-gradient(to bottom right,#fff,#f4f4f4);}
+.photo-container {width:200px;height:200px;margin:0 auto 20px;border-radius:50%;overflow:hidden;box-shadow:0 0 25px rgba(0,0,0,0.1);animation:float 4s ease-in-out infinite;}
+@keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.photo {width:100%; height:100%; object-fit:cover;}
+.pseudo {color:#555; font-size:1.3rem; margin-bottom:1rem;}
+#typed-text {font-weight:300; margin-bottom:1.5rem; font-size:1.1rem; min-height:30px;}
+
+/* ====== À propos ====== */
+.skills span {background:#eee; padding:8px 15px; border-radius:20px; margin:5px; display:inline-block; transition:0.3s;}
+.skills span:hover {background:#222; color:#fff;}
+
+/* ====== Projets ====== */
+.projects {display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
+.card {width:300px; background:#fff; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.1); overflow:hidden; transition:transform 0.3s ease; position:relative;}
+.card:hover {transform:translateY(-10px);}
+.card img {width:100%; transition:transform 0.3s ease;}
+.card:hover img {transform:scale(1.05);}
+.card h3 {margin:15px 0 5px;}
+.card p {padding:0 15px 15px; font-size:0.9rem;}
+
+/* ====== Quiz Manga ====== */
+.quiz-container {max-width:600px; margin:20px auto; background:#f9f9f9; padding:20px; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.1);}
+#question {font-size:1.3rem; margin-bottom:20px; opacity:0; transform:translateY(-20px); transition:all 0.5s ease;}
+.show-question {opacity:1; transform:translateY(0);}
+#answers {display:flex; flex-direction:column; gap:10px;}
+#answers button, #next-btn {padding:10px 15px; border:none; border-radius:25px; cursor:pointer; background:#222; color:#fff; transition:all 0.3s ease; opacity:0; transform:scale(0.9);}
+.show-btn {opacity:1; transform:scale(1);}
+#answers button:hover, #next-btn:hover {background:#444; transform:scale(1.05);}
+#next-btn {margin-top:20px; display:none;}
+#score {font-weight:bold; margin-top:20px;}
+#otaku-card {margin-top:20px; padding:15px; background:#eee; border-radius:15px; font-weight:bold;}
+
+/* ====== Contact ====== */
+.socials .btn {margin:5px;}
+footer {background:#f2f2f2; padding:20px; text-align:center; font-size:0.9rem;}
+</style>
+</head>
+<body>
+
+<!-- ====== Accueil ====== -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="photo-container">
+      <img src="https://via.placeholder.com/200" alt="Photo de Camille Prospère" class="photo">
+    </div>
+    <h1>Camille Prospère</h1>
+    <h2 class="pseudo">@Kyo Soma</h2>
+    <p id="typed-text"></p>
+    <a href="#projets" class="btn">Voir mes projets</a>
+  </div>
+</header>
+
+<!-- ====== À propos ====== -->
+<section id="about" class="section">
+  <h2>À propos</h2>
+  <p>Je suis <strong>Camille Prospère</strong>, alias <strong>Kyo Soma</strong>, passionné de technologie et d’anime.</p>
+  <div class="skills">
+    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Design</span>
+  </div>
+</section>
+
+<!-- ====== Projets ====== -->
+<section id="projets" class="section">
+  <h2>Mes Projets</h2>
+  <div class="projects">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1504691342899-9ea6b43a1700?auto=format&fit=crop&w=800&q=80" alt="Portfolio Personnel">
+      <h3>Portfolio Personnel</h3>
+      <p>Mon site web personnel pour présenter mes projets et compétences.</p>
+      <a href="#" class="btn">Voir le projet</a>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="To-Do List App">
+      <h3>Application To-Do List</h3>
+      <p>Application interactive pour gérer des tâches avec JS.</p>
+      <a href="#" class="btn">Voir le projet</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Jeux / Quiz Manga ====== -->
+<section id="games" class="section">
+  <h2>Jeux / Quiz Manga</h2>
+  <p>Testez vos connaissances et découvrez votre niveau d’Otaku !</p>
+  <div class="quiz-container">
+    <p id="question"></p>
+    <div id="answers"></div>
+    <button id="next-btn" class="btn">Question suivante</button>
+    <p id="score"></p>
+    <div id="otaku-card"></div>
+    <h3>Top Scores</h3>
+    <ul id="leaderboard"></ul>
+  </div>
+</section>
+
+<!-- ====== Contact ====== -->
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <p>Retrouve-moi sur mes réseaux ou écris-moi directement 📩</p>
+  <div class="socials">
+    <a href="mailto:gnandekouakou7@gmail.com?subject=Contact Portfolio&body=Bonjour Camille," class="btn">M’envoyer un mail</a>
+    <a href="https://www.facebook.com/profile.php?id=61578153767211" target="_blank" class="btn">Facebook</a>
+  </div>
+</section>
+
+<footer>© 2025 Camille Prospère - Tous droits réservés.</footer>
+
+<script>
+// ====== Effet machine à écrire ======
+const text = "Développeur créatif passionné par le design et les animés.";
+const typedText = document.getElementById("typed-text");
+let i = 0;
+function typeWriter() { if(i < text.length){ typedText.textContent += text.charAt(i); i++; setTimeout(typeWriter,50);}}
+window.onload = typeWriter;
+
+// ====== Sections scroll visible ======
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {sections.forEach(section => {if(section.getBoundingClientRect().top < window.innerHeight - 100){section.classList.add('visible');}});});
+
+// ====== Quiz Manga ======
+const quizData = [
+  {question:"Quel est le fruit du démon de Luffy ?", answers:["Gomu Gomu","Mera Mera","Hito Hito","Gura Gura"], correct:"Gomu Gomu"},
+  {question:"Qui est le capitaine de l’équipage Chapeau de Paille ?", answers:["Roronoa Zoro","Monkey D. Luffy","Sanji","Nami"], correct:"Monkey D. Luffy"},
+  {question:"Qui est le fils de Goku ?", answers:["Vegeta","Trunks","Gohan","Piccolo"], correct:"Gohan"},
+  {question:"Quel est le nom du protagoniste principal d’Attack on Titan ?", answers:["Levi","Eren Yeager","Armin","Mikasa"], correct:"Eren Ye
